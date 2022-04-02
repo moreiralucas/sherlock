@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  sherlock:
+    container_name: jude_sherlock
+    build: .
+    volumes:
+      - ./submissions:/usr/src/app/submissions/ # To use only in prod
+      # - .:/usr/src/app/ # To use only in development
+    restart: always
+    command: "python main.py"
+    network_mode: host
+    env_file:
+      - ./.env
